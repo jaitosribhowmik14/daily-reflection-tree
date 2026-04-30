@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Reflection Tree</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="app-container">
+
+    <header class="header">
+        <h1>Daily Reflection Tree</h1>
+        <p>Deterministic Reflection Agent</p>
+    </header>
+
+    <section class="progress-section">
+        <div class="progress-label">Reflection Progress</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: {{ progress }}%;"></div>
+        </div>
+        <div class="progress-percent">{{ progress }}%</div>
+    </section>
+
+    <section class="transcript-section">
+        {% for item in transcript %}
+            {% if item.type == "start" or item.type == "bridge" %}
+                <div class="card bridge-card">
+                    <p>{{ item.text }}</p>
+                </div>
+            {% elif item.type == "question" %}
+                <div class="card answer-card">
+                    <p class="question-text">{{ item.text }}</p>
+                    <p class="answer-text">Your answer: {{ item.answer }}</p>
+                </div>
+            {% elif item.type == "reflection" %}
+                <div class="card reflection-card">
+                    <h3>Reflection</h3>
+                    <p>{{ item.text }}</p>
+                </div>
+            {% elif item.type == "summary" %}
+                <div class="card summary-card">
+                    <h2>Daily Summary</h2>
+                    <p>{{ item.text }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </section>
+
+    <section class="interaction-section">
+
+        {% if node.type == "question" %}
+            <div class="card question-card">
+                <h2>{{ node.text }}</h2>
+
+                <form action="/next" method="POST">
+                    <div class="options-container">
+                        {% for option in node.options %}
+                            <label class="option-button">
+                                <input type="radio" name="option" value="{{ option.label }}" required>
+                                <span>{{ option.label }}</span>
+                            </label>
+                        {% endfor %}
+                    </div>
+
+                    <button type="submit" class="primary-btn">Continue</button>
+                </form>
+            </div>
+
+        {% elif node.type == "reflection" %}
+            <div class="card reflection-card current-card">
+                <h2>Pause & Reflect</h2>
+                <p>{{ node.text }}</p>
+
+                <form action="/next" method="POST">
+                    <button type="submit" class="primary-btn">Continue</button>
+                </form>
+            </div>
+
+        {% elif node.type == "summary" %}
+            <div class="card summary-card current-card">
+                <h2>Your Reflection Summary</h2>
+                <p>{{ node.text }}</p>
+
+                <form action="/next" method="POST">
+                    <button type="submit" class="primary-btn">Finish Session</button>
+                </form>
+            </div>
+
+        {% elif node.type == "end" %}
+            <div class="card end-card">
+                <h2>Session Complete</h2>
+                <p>{{ node.text }}</p>
+
+                <a href="/" class="restart-btn">Start Again Tomorrow</a>
+            </div>
+        {% endif %}
+
+    </section>
+
+</div>
+
+</body>
+</html>

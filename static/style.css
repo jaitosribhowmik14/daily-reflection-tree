@@ -1,0 +1,273 @@
+/* ---------------------------
+   GLOBAL STYLES
+---------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+    color: #f8fafc;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+/* ---------------------------
+   MAIN CONTAINER
+---------------------------- */
+.app-container {
+    max-width: 950px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------------------------
+   HEADER
+---------------------------- */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 1rem;
+    color: #cbd5e1;
+    letter-spacing: 1px;
+}
+
+/* ---------------------------
+   PROGRESS BAR
+---------------------------- */
+.progress-section {
+    margin-bottom: 35px;
+}
+
+.progress-label {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #22c55e);
+    border-radius: 50px;
+    transition: width 0.4s ease;
+}
+
+.progress-percent {
+    margin-top: 8px;
+    text-align: right;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+}
+
+/* ---------------------------
+   TRANSCRIPT
+---------------------------- */
+.transcript-section {
+    margin-bottom: 30px;
+}
+
+/* ---------------------------
+   CARD SYSTEM
+---------------------------- */
+.card {
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.bridge-card {
+    background: rgba(59, 130, 246, 0.18);
+    border-left: 4px solid #60a5fa;
+}
+
+.answer-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-left: 4px solid #94a3b8;
+}
+
+.reflection-card {
+    background: rgba(34, 197, 94, 0.14);
+    border-left: 4px solid #22c55e;
+}
+
+.summary-card {
+    background: rgba(168, 85, 247, 0.16);
+    border-left: 4px solid #c084fc;
+}
+
+.question-card {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.end-card {
+    background: rgba(250, 204, 21, 0.16);
+    border-left: 4px solid #facc15;
+    text-align: center;
+}
+
+/* ---------------------------
+   TEXT
+---------------------------- */
+.question-text {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.answer-text {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+.card h2,
+.card h3 {
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.card p {
+    line-height: 1.7;
+    color: #e2e8f0;
+}
+
+/* ---------------------------
+   OPTIONS
+---------------------------- */
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 20px 0;
+}
+
+.option-button {
+    display: block;
+    cursor: pointer;
+}
+
+.option-button input[type="radio"] {
+    display: none;
+}
+
+.option-button span {
+    display: block;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid transparent;
+    transition: all 0.25s ease;
+    color: #f8fafc;
+    font-size: 0.96rem;
+}
+
+.option-button span:hover {
+    background: rgba(56, 189, 248, 0.16);
+    border-color: #38bdf8;
+}
+
+.option-button input[type="radio"]:checked + span {
+    background: rgba(34, 197, 94, 0.18);
+    border-color: #22c55e;
+    transform: scale(1.01);
+}
+
+/* ---------------------------
+   BUTTONS
+---------------------------- */
+.primary-btn,
+.restart-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 14px 26px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #38bdf8, #22c55e);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.primary-btn:hover,
+.restart-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+}
+
+/* ---------------------------
+   CURRENT SECTION
+---------------------------- */
+.current-card {
+    margin-top: 25px;
+}
+
+/* ---------------------------
+   ANIMATIONS
+---------------------------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------------------------
+   RESPONSIVE
+---------------------------- */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .app-container {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .primary-btn,
+    .restart-btn {
+        width: 100%;
+        text-align: center;
+    }
+}

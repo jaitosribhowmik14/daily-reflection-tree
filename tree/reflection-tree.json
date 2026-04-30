@@ -1,0 +1,316 @@
+{
+  "start_node": "START",
+  "nodes": [
+    {
+      "id": "START",
+      "parentId": null,
+      "type": "start",
+      "text": "Hello. Let’s reflect on how you showed up today.",
+      "options": [],
+      "target": "A1_OPEN",
+      "signal": ""
+    },
+
+    {
+      "id": "A1_OPEN",
+      "parentId": "START",
+      "type": "question",
+      "text": "How would you describe your day overall?",
+      "options": [
+        {
+          "label": "Productive",
+          "target": "A1_Q1",
+          "signal": "axis1:internal"
+        },
+        {
+          "label": "Mixed",
+          "target": "A1_Q1",
+          "signal": "axis1:internal"
+        },
+        {
+          "label": "Tough",
+          "target": "A1_Q1_LOW",
+          "signal": "axis1:external"
+        },
+        {
+          "label": "Frustrating",
+          "target": "A1_Q1_LOW",
+          "signal": "axis1:external"
+        }
+      ]
+    },
+
+    {
+      "id": "A1_Q1",
+      "parentId": "A1_OPEN",
+      "type": "question",
+      "text": "When something didn’t go as planned, what was your first response?",
+      "options": [
+        {
+          "label": "I adjusted my approach",
+          "target": "A1_Q2",
+          "signal": "axis1:internal"
+        },
+        {
+          "label": "I thought about what I could improve",
+          "target": "A1_Q2",
+          "signal": "axis1:internal"
+        },
+        {
+          "label": "I waited for someone else",
+          "target": "A1_Q2",
+          "signal": "axis1:external"
+        },
+        {
+          "label": "I blamed circumstances",
+          "target": "A1_Q2",
+          "signal": "axis1:external"
+        }
+      ]
+    },
+
+    {
+      "id": "A1_Q1_LOW",
+      "parentId": "A1_OPEN",
+      "type": "question",
+      "text": "When today became difficult, what felt most true?",
+      "options": [
+        {
+          "label": "I looked for my next move",
+          "target": "A1_Q2",
+          "signal": "axis1:internal"
+        },
+        {
+          "label": "I felt blocked by others",
+          "target": "A1_Q2",
+          "signal": "axis1:external"
+        },
+        {
+          "label": "I adapted slowly",
+          "target": "A1_Q2",
+          "signal": "axis1:internal"
+        },
+        {
+          "label": "I shut down",
+          "target": "A1_Q2",
+          "signal": "axis1:external"
+        }
+      ]
+    },
+
+    {
+      "id": "A1_Q2",
+      "parentId": "A1_Q1",
+      "type": "question",
+      "text": "By the end of the day, how did you respond?",
+      "options": [
+        {
+          "label": "I found a way forward",
+          "target": "A1_REFLECT",
+          "signal": "axis1:internal"
+        },
+        {
+          "label": "I learned something useful",
+          "target": "A1_REFLECT",
+          "signal": "axis1:internal"
+        },
+        {
+          "label": "I stayed stuck",
+          "target": "A1_REFLECT",
+          "signal": "axis1:external"
+        },
+        {
+          "label": "I depended on rescue",
+          "target": "A1_REFLECT",
+          "signal": "axis1:external"
+        }
+      ]
+    },
+
+    {
+      "id": "A1_REFLECT",
+      "parentId": "A1_Q2",
+      "type": "reflection",
+      "text": "Today, your responses suggest {axis1_dominant}. Agency isn’t about controlling everything — it’s about noticing where your choices still existed.",
+      "options": [],
+      "target": "BRIDGE_1_2",
+      "signal": ""
+    },
+
+    {
+      "id": "BRIDGE_1_2",
+      "parentId": "A1_REFLECT",
+      "type": "bridge",
+      "text": "Now let’s shift from how you handled your day… to what you gave through it.",
+      "options": [],
+      "target": "A2_OPEN",
+      "signal": ""
+    },
+
+    {
+      "id": "A2_OPEN",
+      "parentId": "BRIDGE_1_2",
+      "type": "question",
+      "text": "Which best describes a moment from today?",
+      "options": [
+        {
+          "label": "I helped without being asked",
+          "target": "A2_Q2",
+          "signal": "axis2:contribution"
+        },
+        {
+          "label": "I improved something quietly",
+          "target": "A2_Q2",
+          "signal": "axis2:contribution"
+        },
+        {
+          "label": "I deserved more recognition",
+          "target": "A2_Q2",
+          "signal": "axis2:entitlement"
+        },
+        {
+          "label": "Others didn’t do enough",
+          "target": "A2_Q2",
+          "signal": "axis2:entitlement"
+        }
+      ]
+    },
+
+    {
+      "id": "A2_Q2",
+      "parentId": "A2_OPEN",
+      "type": "question",
+      "text": "What motivated most of your effort today?",
+      "options": [
+        {
+          "label": "Helping the team succeed",
+          "target": "A2_REFLECT",
+          "signal": "axis2:contribution"
+        },
+        {
+          "label": "Doing meaningful work well",
+          "target": "A2_REFLECT",
+          "signal": "axis2:contribution"
+        },
+        {
+          "label": "Getting noticed",
+          "target": "A2_REFLECT",
+          "signal": "axis2:entitlement"
+        },
+        {
+          "label": "Avoiding unfairness",
+          "target": "A2_REFLECT",
+          "signal": "axis2:entitlement"
+        }
+      ]
+    },
+
+    {
+      "id": "A2_REFLECT",
+      "parentId": "A2_Q2",
+      "type": "reflection",
+      "text": "Your day leaned toward {axis2_dominant}. Contribution often creates meaning faster than recognition alone.",
+      "options": [],
+      "target": "BRIDGE_2_3",
+      "signal": ""
+    },
+
+    {
+      "id": "BRIDGE_2_3",
+      "parentId": "A2_REFLECT",
+      "type": "bridge",
+      "text": "Finally, let’s widen the lens — beyond you, beyond tasks.",
+      "options": [],
+      "target": "A3_OPEN",
+      "signal": ""
+    },
+
+    {
+      "id": "A3_OPEN",
+      "parentId": "BRIDGE_2_3",
+      "type": "question",
+      "text": "When you think about today’s biggest challenge, who comes to mind first?",
+      "options": [
+        {
+          "label": "Just me",
+          "target": "A3_Q2",
+          "signal": "axis3:self"
+        },
+        {
+          "label": "My immediate tasks",
+          "target": "A3_Q2",
+          "signal": "axis3:self"
+        },
+        {
+          "label": "My team",
+          "target": "A3_Q2",
+          "signal": "axis3:other"
+        },
+        {
+          "label": "Customers or others affected",
+          "target": "A3_Q2",
+          "signal": "axis3:other"
+        }
+      ]
+    },
+
+    {
+      "id": "A3_Q2",
+      "parentId": "A3_OPEN",
+      "type": "question",
+      "text": "What felt most meaningful today?",
+      "options": [
+        {
+          "label": "Protecting my own energy",
+          "target": "A3_REFLECT",
+          "signal": "axis3:self"
+        },
+        {
+          "label": "Finishing my responsibilities",
+          "target": "A3_REFLECT",
+          "signal": "axis3:self"
+        },
+        {
+          "label": "Supporting others",
+          "target": "A3_REFLECT",
+          "signal": "axis3:other"
+        },
+        {
+          "label": "Serving something larger",
+          "target": "A3_REFLECT",
+          "signal": "axis3:other"
+        }
+      ]
+    },
+
+    {
+      "id": "A3_REFLECT",
+      "parentId": "A3_Q2",
+      "type": "reflection",
+      "text": "Your focus leaned toward {axis3_dominant}. Meaning often expands when your radius of concern expands too.",
+      "options": [],
+      "target": "SUMMARY",
+      "signal": ""
+    },
+
+    {
+      "id": "SUMMARY",
+      "parentId": "A3_REFLECT",
+      "type": "summary",
+      "text": "Today you leaned {axis1_dominant} on agency, {axis2_dominant} on orientation, and {axis3_dominant} in your radius of concern. Reflection is awareness — tomorrow is another chance to choose.",
+      "options": [],
+      "target": "END",
+      "signal": ""
+    },
+
+    {
+      "id": "END",
+      "parentId": "SUMMARY",
+      "type": "end",
+      "text": "Session complete. See you tomorrow.",
+      "options": [],
+      "target": "",
+      "signal": ""
+    }
+  ]
+}
