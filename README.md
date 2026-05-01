@@ -1,4 +1,4 @@
-# DeepThought Daily Reflection Tree Agent
+# Daily Reflection Tree Agent
 
 ## DT Fellowship Assignment — Deterministic Reflection System
 
@@ -26,7 +26,7 @@ Was my frame limited to myself, or did it include others?
 
 # Core Philosophy
 
-This project was designed according to DeepThought’s emphasis on:
+This project was designed with emphasis on:
 
 ### Determinism over generative AI
 - No LLM at runtime
